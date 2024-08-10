@@ -1,6 +1,6 @@
 # Global variables
-global VECTOR_STORE_PATH
-VECTOR_STORE_PATH = None
+global VECTOR_STORE
+VECTOR_STORE = None
 global LAST_UPDATE_TIME
 LAST_UPDATE_TIME = 0
 
