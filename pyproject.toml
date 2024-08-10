@@ -29,6 +29,9 @@ langchainhub = "^0.1.20"
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.1"
+pylint = "^3.2.6"
+black = "^24.8.0"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]
