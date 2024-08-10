@@ -9,7 +9,8 @@ from langchain import hub
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 from langchain_google_genai import (
-    ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
+    ChatGoogleGenerativeAI,
+    GoogleGenerativeAIEmbeddings,
 )
 
 from ttrpg_ai_rag_assistant import enums
@@ -32,6 +33,7 @@ app = FastAPI()
 genai.configure(api_key=GOOGLE_API_KEY)
 llm = ChatGoogleGenerativeAI(model=enums.LLM_MODEL)
 
+
 class QueryRequest(BaseModel):
     query_text: str
 
@@ -52,8 +54,7 @@ if enums.VECTOR_STORE is None:
 
 @app.post("/query")
 async def query(query_request: QueryRequest) -> JSONResponse:
-    """Query the RAG model with the given query text.
-    """
+    """Query the RAG model with the given query text."""
     # Check for new PDFs and update vectorstore if needed
     ingest.check_for_new_pdfs(embedding_function=embedding_function)
 
@@ -63,11 +64,9 @@ async def query(query_request: QueryRequest) -> JSONResponse:
             embedding_function=embedding_function
         )
 
-
     # Define the format_documents function
     def format_documents(documents) -> str:
         return "\n\n".join(document.page_content for document in documents)
-
 
     # Create the chain
     retriever = enums.VECTOR_STORE.as_retriever()
