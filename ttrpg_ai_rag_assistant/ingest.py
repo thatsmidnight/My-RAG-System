@@ -1,17 +1,20 @@
+# Standard Library
 import os
 import time
 
+# Third Party
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+# Local Folder
 from ttrpg_ai_rag_assistant import enums
 
 
 # Helper function to load PDFs and build the vectorstore
 def load_pdfs_and_build_vectorstore(
-    embedding_function: GoogleGenerativeAIEmbeddings
+    embedding_function: GoogleGenerativeAIEmbeddings,
 ) -> None:
     """Load PDFs from the PDF_FOLDER_PATH and build the vectorstore with the embeddings.
 
@@ -23,7 +26,9 @@ def load_pdfs_and_build_vectorstore(
     documents = []
     for filename in os.listdir(enums.PDF_FOLDER_PATH):
         if filename.endswith(".pdf"):
-            loader = PyPDFLoader(os.path.join(enums.PDF_FOLDER_PATH, filename))
+            loader = PyPDFLoader(
+                os.path.join(enums.PDF_FOLDER_PATH, filename)
+            )
             documents.extend(loader.load())
 
     text_splitter = RecursiveCharacterTextSplitter(
@@ -39,7 +44,7 @@ def load_pdfs_and_build_vectorstore(
 
 
 def load_persistent_vectorstore(
-    embedding_function: GoogleGenerativeAIEmbeddings
+    embedding_function: GoogleGenerativeAIEmbeddings,
 ) -> None:
     """Load the persistent vector store from the VECTOR_STORE_PATH.
 
@@ -56,7 +61,7 @@ def load_persistent_vectorstore(
 
 # Check for new PDFs and update vectorstore if neededd
 def check_for_new_pdfs(
-    embedding_function: GoogleGenerativeAIEmbeddings
+    embedding_function: GoogleGenerativeAIEmbeddings,
 ) -> None:
     current_time = time.time()
     if current_time - enums.LAST_UPDATE_TIME > 60:  # Update every 60 seconds
