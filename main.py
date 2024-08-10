@@ -1,10 +1,11 @@
+# Standard Library
 import os
 
+# Third Party
+import google.generativeai as genai
+import uvicorn
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-import uvicorn
-from pydantic import BaseModel
-import google.generativeai as genai
 from langchain import hub
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -12,11 +13,13 @@ from langchain_google_genai import (
     ChatGoogleGenerativeAI,
     GoogleGenerativeAIEmbeddings,
 )
+from pydantic import BaseModel
 
-from ttrpg_ai_rag_assistant import enums
-from ttrpg_ai_rag_assistant import ingest
+# Local Folder
+from ttrpg_ai_rag_assistant import enums, ingest
 
 try:
+    # Third Party
     from dotenv import load_dotenv
 
     load_dotenv()

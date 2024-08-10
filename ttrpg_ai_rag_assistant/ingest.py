@@ -1,11 +1,14 @@
+# Standard Library
 import os
 import time
 
+# Third Party
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
+# Local Folder
 from ttrpg_ai_rag_assistant import enums
 
 
