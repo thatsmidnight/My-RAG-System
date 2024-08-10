@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "ttrpg ai rag assistant"
+version = "0.1.0"
+description = "An assistant to help with rules questions for whatever TTRPG PDF file you have!"
+authors = ["thatsmidnight <10793854+thatsmidnight@users.noreply.github.com>"]
+license = "CC BY-NC 4.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.12"
+fastapi = "^0.112.0"
+langchain = "^0.2.12"
+pypdf2 = "^3.0.1"
+chromadb = "^0.5.5"
+sentence-transformers = "^3.0.1"
+google-generativeai = "^0.7.2"
+langchain-community = "^0.2.11"
+langchain-google-genai = "^1.0.8"
+langchain-huggingface = "^0.0.3"
+openai = "^1.40.2"
+langchain-openai = "^0.1.20"
+pypdf = "^4.3.1"
+langchain-chroma = "^0.1.2"
+langchainhub = "^0.1.20"
+
+
+[tool.poetry.group.dev.dependencies]
+python-dotenv = "^1.0.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
