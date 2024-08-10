@@ -151,11 +151,3 @@ if __name__ == "__main__":
         limit_max_requests=1000,
         ws_max_size=1000000,
     )
-
-    # url = "http://localhost:8000/query"
-    # response = requests.post(
-    #     url, json={
-    #         "query_text": "What do you have to roll on a d6 for a torch to go out?"
-    #     }
-    # )
-    # print(response.json())
