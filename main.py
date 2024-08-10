@@ -43,8 +43,11 @@ def get_embedding_function() -> GoogleGenerativeAIEmbeddings:
 
 # Load PDFs and build the vectorstore
 embedding_function = get_embedding_function()
-ingest.load_pdfs_and_build_vectorstore(embedding_function=embedding_function)
 ingest.load_persistent_vectorstore(embedding_function=embedding_function)
+if enums.VECTOR_STORE is None:
+    ingest.load_pdfs_and_build_vectorstore(
+        embedding_function=embedding_function
+    )
 
 
 @app.post("/query")
