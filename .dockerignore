@@ -1,0 +1,9 @@
+__pycache__/
+.venv
+.gitignore
+tests
+.python-version
+LICENSE
+README.md
+Dockerfile
+chroma_db
