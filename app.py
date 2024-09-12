@@ -1,6 +1,7 @@
 """This module contains the FastAPI application and the main route for handling
 query requests.
 """
+
 # Standard Library
 import os
 import logging
@@ -93,21 +94,18 @@ if chroma_db.collection.count() == 0:
                 documents=[doc.page_content for doc in documents],
             )
             logger.info(
-                "ChromaDB collection now contains %s documents." % (
-                    chroma_db.collection.count()
-                )
+                "ChromaDB collection now contains %s documents."
+                % (chroma_db.collection.count())
             )
         else:
             logger.warning(
-                "No embeddings generated for the %s documents." % (
-                    len(documents)
-                )
+                "No embeddings generated for the %s documents."
+                % (len(documents))
             )
 else:
     logger.info(
-        "ChromaDB collection already contains %s documents." % (
-            chroma_db.collection.count()
-        )
+        "ChromaDB collection already contains %s documents."
+        % (chroma_db.collection.count())
     )
 
 
@@ -148,7 +146,8 @@ def handle_query(query: Query) -> Optional[Dict[str, Any]]:
     documents = [
         chroma_db.collection.get(
             ids=[doc_id], include=["documents", "metadatas"]
-        ) for doc_id in document_ids
+        )
+        for doc_id in document_ids
     ]
     relevant_chunks = [doc["documents"][0] for doc in documents]
 

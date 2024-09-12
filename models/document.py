@@ -1,12 +1,13 @@
 """Module to define the Document class."""
+
 # Standard Library
 from uuid import uuid4
 from typing import Optional, Union, List
 
 
 class Document:
-    """Class to represent a document object.
-    """
+    """Class to represent a document object."""
+
     @property
     def filepath(self) -> str:
         """The filepath of the document."""

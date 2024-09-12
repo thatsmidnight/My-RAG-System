@@ -1,4 +1,5 @@
 """Module to process documents and extract text from them."""
+
 # Standard Library
 import re
 import logging
@@ -19,8 +20,7 @@ from models.document import Document
 
 
 class DocumentProcessor:
-    """Class to process documents and extract text from them.
-    """
+    """Class to process documents and extract text from them."""
 
     # Regular expression patterns to extract edition and title from the
     # filepath
@@ -108,9 +108,7 @@ class DocumentProcessor:
             )
             if type(document_pages) is str:
                 document_pages = [document_pages]
-            logger.info(
-                f"Found {len(document_pages)} pages in {filepath}"
-            )
+            logger.info(f"Found {len(document_pages)} pages in {filepath}")
             for idx, page_content in enumerate(document_pages):
                 logger.debug(f"Extracting text from page {idx + 1}...")
                 document = Document(

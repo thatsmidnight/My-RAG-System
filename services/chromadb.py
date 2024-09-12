@@ -1,4 +1,5 @@
 """Module to define the ChromaDB class."""
+
 # Standard Library
 from typing import Optional
 
@@ -18,7 +19,7 @@ class ChromaDB:
         embedding_function: Optional[EmbeddingFunction] = None,
         chroma_db_path: Optional[str] = enums.CHROMA_DB_PATH,
         collection_name: Optional[str] = enums.COLLECTION_NAME,
-        settings: Optional[Settings] = None
+        settings: Optional[Settings] = None,
     ) -> None:
         if not embedding_function:
             self.embedding_function = GeminiEmbeddingFunction(

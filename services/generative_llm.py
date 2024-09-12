@@ -16,6 +16,7 @@ class GenerativeLLM:
     """Class to define the GenerativeModel for generating text using Google's
     Large Language Models.
     """
+
     @classmethod
     def get_model(
         cls, model_name: Optional[str] = LLM_MODEL

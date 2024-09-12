@@ -1,4 +1,5 @@
 """Module to define the GeminiEmbeddingFunction class."""
+
 # Standard Library
 import logging
 from typing import Optional, Union, List
@@ -28,6 +29,7 @@ class GeminiEmbeddingFunction(EmbeddingFunction):
     """Generates embeddings for text documents using Google's Text Embedding
     API and stores them in a ChromaDB collection.
     """
+
     def __init__(
         self,
         model_name: Optional[str] = enums.EMBEDDING_MODEL,

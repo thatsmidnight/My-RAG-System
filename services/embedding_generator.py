@@ -2,6 +2,7 @@
 embeddings for text documents using Google's Text Embedding API and stores
 them in a ChromaDB collection.
 """
+
 # Standard Library
 import logging
 from typing import List, Optional, Union
@@ -48,15 +49,17 @@ class EmbeddingGenerator:
             "models/text-embedding-004"
         """
         self.embedding_function = (
-            embedding_function or GeminiEmbeddingFunction(
+            embedding_function
+            or GeminiEmbeddingFunction(
                 model=model_name, output_dimensionality=output_dimensionality
             )
         )
 
     def _chunkify_text(
-        self, text: str,
+        self,
+        text: str,
         chunk_size: Optional[int] = 1000,
-        chunk_overlap: Optional[int] = 100
+        chunk_overlap: Optional[int] = 100,
     ) -> List[str]:
         """Splits a text into chunks of a specified size with a specified
         overlap.

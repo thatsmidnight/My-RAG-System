@@ -1,4 +1,5 @@
 """Utility functions for file operations."""
+
 # Standard Library
 import os
 import logging
@@ -25,7 +26,8 @@ def get_pdf_filepaths(base_folder: str) -> List[Optional[str]]:
     filepaths = []
     try:
         files = [
-            f for f in os.listdir(base_folder)
+            f
+            for f in os.listdir(base_folder)
             if os.path.isfile(os.path.join(base_folder, f))
         ]
         logger.info(
