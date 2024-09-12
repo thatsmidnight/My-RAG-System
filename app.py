@@ -7,6 +7,9 @@ import os
 import logging
 from typing import Dict, Optional, Any
 
+# Local Folder
+from utils import enums
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -24,24 +27,14 @@ if IS_LOCAL:
             "python-dotenv is not installed. Environment variables must be set "
             "manually."
         )
-    PATH_TO_TTRPG_PDFS = os.path.join(
-        "..", "..", "Documents", "Tabletop RPGs"
-    )
+    PATH_TO_TTRPG_PDFS = enums.LOCAL_PATH_TO_TTRPG_PDFS
 else:
-    PATH_TO_TTRPG_PDFS = "/app/data"
-GAME_SYSTEM_FOLDERS = [
-    "Dragonbane",
-    "Kids on Bikes 2e",
-    "Star Wars 5e",
-    "Risus The Anything RPG",
-    "Gamma Wolves",
-]
+    PATH_TO_TTRPG_PDFS = enums.PATH_TO_TTRPG_PDFS
 
 # Third-Party
 from fastapi import FastAPI, HTTPException
 
 # Local Folder
-from utils import enums
 from models.query import Query
 from services.chromadb import ChromaDB
 from services.generative_llm import GenerativeLLM
@@ -72,7 +65,7 @@ if chroma_db.collection.count() == 0:
         "No documents found in the ChromaDB collection. Processing and "
         "generating embeddings for TTRPG rulebooks..."
     )
-    for folder in GAME_SYSTEM_FOLDERS:
+    for folder in enums.GAME_SYSTEM_FOLDERS:
         # Process documents
         processor = DocumentProcessor(
             base_folder=os.path.join(PATH_TO_TTRPG_PDFS, folder)
