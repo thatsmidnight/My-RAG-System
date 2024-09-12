@@ -114,18 +114,17 @@ Of the available Google Gemini models, which fit the "use case" we are trying to
 
 ### Docker
 
-```
+```shell
 docker build -t aio-generative-ai .
 ```
 
-```
+```shell
 docker run -d -p 8000:8000 -v "~\Documents\Tabletop RPGs:/app/data" -e GOOGLE_API_KEY=your_api_key aio-generative-ai
 ```
 
-
 ### Testing
 
-```
+```shell
 curl -X POST -H "Content-Type: application/json" -d '{"query": "Give me a summary of Dragonbane?"}' http://localhost:8000/query
 curl -X POST -H "Content-Type: application/json" -d '{"query": "Give me a summary of the gameplay of Gamma Wolves?"}' http://localhost:8000/query
 ```
