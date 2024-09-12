@@ -1,4 +1,5 @@
 """Module to process documents and extract text from them."""
+# Standard Library
 import re
 import logging
 from typing import List, Optional
@@ -8,9 +9,11 @@ from pathlib import Path
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Third-Party
 import pymupdf
 from pymupdf4llm import to_markdown
 
+# Local Folder
 from utils.file_utils import get_pdf_filepaths
 from models.document import Document
 

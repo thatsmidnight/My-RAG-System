@@ -1,9 +1,12 @@
 """Module to define the ChromaDB class."""
+# Standard Library
 from typing import Optional
 
+# Third-Party
 from chromadb import EmbeddingFunction, PersistentClient
 from chromadb.config import Settings
 
+# Local Folder
 from utils import enums
 from services.embedding_function import GeminiEmbeddingFunction
 

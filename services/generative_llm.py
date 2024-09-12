@@ -2,10 +2,13 @@
 Large Language Models.
 """
 
+# Standard Library
 from typing import Optional
 
+# Third-Party
 import google.generativeai as genai
 
+# Local Folder
 from utils.enums import LLM_MODEL
 
 

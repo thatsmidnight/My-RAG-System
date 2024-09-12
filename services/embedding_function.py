@@ -1,4 +1,5 @@
 """Module to define the GeminiEmbeddingFunction class."""
+# Standard Library
 import logging
 from typing import Optional, Union, List
 
@@ -7,15 +8,18 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
+    # Third-Party
     from dotenv import load_dotenv
 
     load_dotenv()
 except ImportError:
     pass
 
+# Third-Party
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from chromadb import EmbeddingFunction, Documents
 
+# Local Folder
 from utils import enums
 from models.document import Document
 

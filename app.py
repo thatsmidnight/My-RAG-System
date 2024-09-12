@@ -1,6 +1,7 @@
 """This module contains the FastAPI application and the main route for handling
 query requests.
 """
+# Standard Library
 import os
 import logging
 from typing import Dict, Optional, Any
@@ -13,6 +14,7 @@ logger = logging.getLogger(__name__)
 IS_LOCAL = os.getenv("IS_LOCAL")
 if IS_LOCAL:
     try:
+        # Third-Party
         from dotenv import load_dotenv
 
         load_dotenv()
@@ -34,8 +36,10 @@ GAME_SYSTEM_FOLDERS = [
     "Gamma Wolves",
 ]
 
+# Third-Party
 from fastapi import FastAPI, HTTPException
 
+# Local Folder
 from utils import enums
 from models.query import Query
 from services.chromadb import ChromaDB
@@ -169,6 +173,7 @@ Answer:"""
 
 
 if __name__ == "__main__":
+    # Third-Party
     import uvicorn
 
     uvicorn.run(app, port=8000, log_level="debug")

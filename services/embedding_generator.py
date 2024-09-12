@@ -2,6 +2,7 @@
 embeddings for text documents using Google's Text Embedding API and stores
 them in a ChromaDB collection.
 """
+# Standard Library
 import logging
 from typing import List, Optional, Union
 
@@ -10,14 +11,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
+    # Third-Party
     from dotenv import load_dotenv
 
     load_dotenv()
 except ImportError:
     pass
 
+# Third-Party
 from chromadb import EmbeddingFunction, Documents
 
+# Local Folder
 from models.document import Document
 from utils import enums
 from services.embedding_function import GeminiEmbeddingFunction
