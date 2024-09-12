@@ -23,9 +23,46 @@ if IS_LOCAL:
         load_dotenv()
     except ImportError:
         logger.warning(
-            "python-dotenv is not installed. Environment variables must be set "
-            "manually."
+            "python-dotenv is not installed. Environment variables must be "
+            "set manually."
         )
     PATH_TO_TTRPG_PDFS = enums.LOCAL_PATH_TO_TTRPG_PDFS
 else:
     PATH_TO_TTRPG_PDFS = enums.PATH_TO_TTRPG_PDFS
+
+
+# Fixtures
+@pytest.fixture(scope="session")
+def path_to_ttrpg_pdfs():
+    """Fixture to provide the path to TTRPG PDFs."""
+    return PATH_TO_TTRPG_PDFS
+
+
+@pytest.fixture(scope="session")
+def embedding_model():
+    """Fixture to provide the embedding model."""
+    return enums.EMBEDDING_MODEL
+
+
+@pytest.fixture(scope="session")
+def llm_model():
+    """Fixture to provide the LLM model."""
+    return enums.LLM_MODEL
+
+
+@pytest.fixture(scope="session")
+def chroma_db_path():
+    """Fixture to provide the ChromaDB path."""
+    return enums.CHROMA_DB_PATH
+
+
+@pytest.fixture(scope="session")
+def collection_name():
+    """Fixture to provide the collection name."""
+    return enums.COLLECTION_NAME
+
+
+@pytest.fixture(scope="session")
+def game_system_folders():
+    """Fixture to provide the game system folders."""
+    return enums.GAME_SYSTEM_FOLDERS
