@@ -9,15 +9,30 @@ from typing import Dict, Optional, Any
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-try:
-    from dotenv import load_dotenv
+# Static variables
+IS_LOCAL = os.getenv("IS_LOCAL")
+if IS_LOCAL:
+    try:
+        from dotenv import load_dotenv
 
-    load_dotenv()
-except ImportError:
-    logger.warning(
-        "python-dotenv is not installed. Environment variables must be set "
-        "manually."
+        load_dotenv()
+    except ImportError:
+        logger.warning(
+            "python-dotenv is not installed. Environment variables must be set "
+            "manually."
+        )
+    PATH_TO_TTRPG_PDFS = os.path.join(
+        "..", "..", "Documents", "Tabletop RPGs"
     )
+else:
+    PATH_TO_TTRPG_PDFS = "/app/data"
+GAME_SYSTEM_FOLDERS = [
+    "Dragonbane",
+    "Kids on Bikes 2e",
+    "Star Wars 5e",
+    "Risus The Anything RPG",
+    "Gamma Wolves",
+]
 
 from fastapi import FastAPI, HTTPException
 
@@ -37,19 +52,6 @@ embedding_function = GeminiEmbeddingFunction(model_name=enums.EMBEDDING_MODEL)
 
 # Initialize Gemini model
 model = GenerativeLLM.get_model(model_name=enums.LLM_MODEL)
-
-# Static variables
-GAME_SYSTEM_FOLDERS = [
-    "Dragonbane",
-    # "Kids on Bikes 2e",
-    # "Star Wars 5e",
-    # "Risus The Anything RPG",
-    # "Gamma Wolves",
-]
-# PATH_TO_TTRPG_PDFS = "/app/data"
-PATH_TO_TTRPG_PDFS = os.path.join(
-    "..", "..", "Documents", "Tabletop RPGs"
-)
 
 # Initialize Chroma client and get the collection
 chroma_db = ChromaDB(
