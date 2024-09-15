@@ -68,6 +68,7 @@ branch = true
 source = ["models", "services", "utils", "app.py"]
 omit = [
     "tests/*",
+    "utils/enums.py"
 ]
 
 [tool.coverage.report]
