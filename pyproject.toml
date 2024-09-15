@@ -9,8 +9,7 @@ packages = [
     { include = "models", from = "." },
     { include = "services", from = "." },
     { include = "utils", from = "." },
-    { include = "app.py", from = "." },
-    { include = "config.py", from = "." }
+    { include = "app.py", from = "." }
 ]
 package-mode = false
 
@@ -63,3 +62,11 @@ use_parentheses = true
 group_by_package = true
 combine_straight_imports = false
 combine_as_imports = true
+
+[tool.coverage.run]
+branch = true
+source = ["models", "services", "utils", "app.py"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
