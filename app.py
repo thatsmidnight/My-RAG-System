@@ -24,8 +24,8 @@ if IS_LOCAL:
         load_dotenv()
     except ImportError:
         logger.warning(
-            "python-dotenv is not installed. Environment variables must be set "
-            "manually."
+            "python-dotenv is not installed. Environment variables must be "
+            "set manually."
         )
     PATH_TO_TTRPG_PDFS = enums.LOCAL_PATH_TO_TTRPG_PDFS
 else:
