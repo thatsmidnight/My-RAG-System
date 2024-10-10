@@ -119,7 +119,7 @@ docker build -t aio-generative-ai .
 ```
 
 ```shell
-docker run -d -p 8000:8000 -v "~\Documents\Tabletop RPGs:/app/data" -e GOOGLE_API_KEY=your_api_key aio-generative-ai
+docker run -d -p 8000:8000 -v "Z://Users//ThatsMidnight//Documents//Documentation:/app/data" -e GOOGLE_API_KEY=your_api_key aio-generative-ai
 ```
 
 ### Testing
