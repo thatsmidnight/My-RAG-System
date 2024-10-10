@@ -18,14 +18,6 @@ CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 100
 
 # Local folders
-GAME_SYSTEM_FOLDERS = [
-    "Dragonbane",
-    "Kids on Bikes 2e",
-    "Star Wars 5e",
-    "Risus The Anything RPG",
-    "Gamma Wolves",
-]
-LOCAL_PATH_TO_TTRPG_PDFS = os.path.join(
-    "..", "..", "Documents", "Tabletop RPGs"
-)
-PATH_TO_TTRPG_PDFS = "/app/data"
+FOLDER_CONTAINING_FILES = ["Ableton v12"]
+PATH_TO_FOLDERS = os.path.join("..", "..", "Documents", "Documentation")
+PATH_TO_PDFS = "/app/data"

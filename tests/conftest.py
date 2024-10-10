@@ -26,16 +26,16 @@ if IS_LOCAL:
             "python-dotenv is not installed. Environment variables must be "
             "set manually."
         )
-    PATH_TO_TTRPG_PDFS = enums.LOCAL_PATH_TO_TTRPG_PDFS
+    PATH_TO_PDFS = enums.PATH_TO_FOLDERS
 else:
-    PATH_TO_TTRPG_PDFS = enums.PATH_TO_TTRPG_PDFS
+    PATH_TO_PDFS = enums.PATH_TO_PDFS
 
 
 # Fixtures
 @pytest.fixture(scope="session")
 def path_to_ttrpg_pdfs():
     """Fixture to provide the path to TTRPG PDFs."""
-    return PATH_TO_TTRPG_PDFS
+    return PATH_TO_PDFS
 
 
 @pytest.fixture(scope="session")
@@ -63,6 +63,6 @@ def collection_name():
 
 
 @pytest.fixture(scope="session")
-def game_system_folders():
+def FOLDER_CONTAINING_FILES():
     """Fixture to provide the game system folders."""
-    return enums.GAME_SYSTEM_FOLDERS
+    return enums.FOLDER_CONTAINING_FILES

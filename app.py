@@ -27,9 +27,9 @@ if IS_LOCAL:
             "python-dotenv is not installed. Environment variables must be "
             "set manually."
         )
-    PATH_TO_TTRPG_PDFS = enums.LOCAL_PATH_TO_TTRPG_PDFS
+    PATH_TO_PDFS = enums.PATH_TO_FOLDERS
 else:
-    PATH_TO_TTRPG_PDFS = enums.PATH_TO_TTRPG_PDFS
+    PATH_TO_PDFS = enums.PATH_TO_PDFS
 
 # Third-Party
 from fastapi import FastAPI, HTTPException
@@ -63,12 +63,12 @@ chroma_db = ChromaDB(
 if chroma_db.collection.count() == 0:
     logger.warning(
         "No documents found in the ChromaDB collection. Processing and "
-        "generating embeddings for TTRPG rulebooks..."
+        "generating embeddings for files..."
     )
-    for folder in enums.GAME_SYSTEM_FOLDERS:
+    for folder in enums.FOLDER_CONTAINING_FILES:
         # Process documents
         processor = DocumentProcessor(
-            base_folder=os.path.join(PATH_TO_TTRPG_PDFS, folder)
+            base_folder=os.path.join(PATH_TO_PDFS, folder)
         )
         documents = processor.process_documents()
         # Generate embeddings
@@ -152,7 +152,7 @@ def handle_query(query: Query) -> Optional[Dict[str, Any]]:
 
     # Response generation
     contents = f"""
-You are a helpful AI assistant providing information based on tabletop role-playing game (TTRPG) rulebooks.
+You are a helpful AI assistant providing information based on the Ableton Live 12 documentation.
 Answer the following question using only the context provided. If you don't have enough information to answer, say you don't know.
 Context: {context}
 Question: {query.query}
